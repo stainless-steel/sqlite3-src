@@ -1,0 +1,13 @@
+[package]
+name = "sqlite3-provider"
+version = "0.0.1"
+license = "Apache-2.0/MIT"
+authors = ["Ivan Ukhov <ivan.ukhov@gmail.com>"]
+description = "The package provides SQLite."
+homepage = "https://github.com/stainless-steel/sqlite3-provider"
+repository = "https://github.com/stainless-steel/sqlite3-provider"
+build = "build.rs"
+links = "sqlite3"
+
+[build-dependencies]
+pkg-config = "0.3"
