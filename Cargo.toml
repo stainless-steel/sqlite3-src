@@ -1,11 +1,11 @@
 [package]
-name = "sqlite3-provider"
+name = "sqlite3-src"
 version = "0.1.0"
 license = "Apache-2.0/MIT"
 authors = ["Ivan Ukhov <ivan.ukhov@gmail.com>"]
 description = "The package provides SQLite."
-homepage = "https://github.com/stainless-steel/sqlite3-provider"
-repository = "https://github.com/stainless-steel/sqlite3-provider"
+homepage = "https://github.com/stainless-steel/sqlite3-src"
+repository = "https://github.com/stainless-steel/sqlite3-src"
 build = "build.rs"
 links = "sqlite3"
 

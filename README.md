@@ -1,4 +1,4 @@
-# sqlite3-provider [![Version][version-img]][version-url]
+# sqlite3-src [![Version][version-img]][version-url]
 
 The package provides [SQLite][1].
 
@@ -10,5 +10,5 @@ will be licensed according to the terms given in [LICENSE.md](LICENSE.md).
 
 [1]: https://sqlite.org
 
-[version-img]: https://img.shields.io/crates/v/sqlite3-provider.svg
-[version-url]: https://crates.io/crates/sqlite3-provider
+[version-img]: https://img.shields.io/crates/v/sqlite3-src.svg
+[version-url]: https://crates.io/crates/sqlite3-src
