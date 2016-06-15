@@ -1,0 +1,17 @@
+language: rust
+sudo: false
+
+os:
+  - linux
+  - osx
+
+rust:
+  - stable
+  - beta
+  - nightly
+
+script:
+  - cargo test --no-default-features --features=bound --verbose
+
+notifications:
+  email: false
