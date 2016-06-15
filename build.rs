@@ -1,9 +1,16 @@
 extern crate pkg_config;
+extern crate gcc;
 
-const NAME: &'static str = "sqlite3";
 
+#[cfg(not(feature = "bound"))]
 fn main() {
+    const NAME: &'static str = "sqlite3";
     if pkg_config::find_library(NAME).is_err() {
-        println!("cargo:rustc-link-lib=dylib={}", NAME);
+        gcc::compile_library("libsqlite3.a", &["sqlite/sqlite3.c"]);
     }
+}
+
+#[cfg(feature = "bound")]
+fn main() {
+    gcc::compile_library("libsqlite3.a", &["sqlite/sqlite3.c"]);
 }
