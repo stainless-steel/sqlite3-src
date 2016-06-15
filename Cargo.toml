@@ -2,7 +2,10 @@
 name = "sqlite3-src"
 version = "0.2.0"
 license = "Apache-2.0/MIT"
-authors = ["Ivan Ukhov <ivan.ukhov@gmail.com>"]
+authors = [
+  "Chip Collier <ccollier@machinezone.com>",
+  "Ivan Ukhov <ivan.ukhov@gmail.com>",
+]
 description = "The package provides SQLite."
 homepage = "https://github.com/stainless-steel/sqlite3-src"
 repository = "https://github.com/stainless-steel/sqlite3-src"
