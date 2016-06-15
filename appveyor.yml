@@ -19,4 +19,5 @@ install:
 build: false
 
 test_script:
+  - git submodule update --init
   - cargo test --features=bound --verbose
