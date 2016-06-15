@@ -4,7 +4,7 @@ The package provides [SQLite][1].
 
 The following Cargo features are supported:
 
-* `bound` to compile SQLite from the source code that comes with the package,
+* `bundled` to compile SQLite from the source code that comes with the package,
   ignoring any SQLite libraries that might be installed in the system.
 
 ## Contribution

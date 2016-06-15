@@ -11,7 +11,7 @@ rust:
   - nightly
 
 script:
-  - cargo test --features=bound --verbose
+  - cargo test --features=bundled --verbose
 
 notifications:
   email: false
