@@ -1,6 +1,6 @@
 [package]
 name = "sqlite3-src"
-version = "0.1.0"
+version = "0.2.0"
 license = "Apache-2.0/MIT"
 authors = ["Ivan Ukhov <ivan.ukhov@gmail.com>"]
 description = "The package provides SQLite."
@@ -9,5 +9,9 @@ repository = "https://github.com/stainless-steel/sqlite3-src"
 build = "build.rs"
 links = "sqlite3"
 
+[features]
+bound = []
+
 [build-dependencies]
 pkg-config = "0.3"
+gcc = "0.3"
