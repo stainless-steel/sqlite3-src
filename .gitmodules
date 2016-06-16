@@ -1,3 +1,0 @@
-[submodule "sqlite"]
-	path = source
-	url = https://github.com/copies/sqlite
