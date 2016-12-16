@@ -1,6 +1,6 @@
 [package]
 name = "sqlite3-src"
-version = "0.2.2"
+version = "0.2.3"
 license = "Apache-2.0/MIT"
 authors = [
     "Chip Collier <ccollier@machinezone.com>",
