@@ -1,6 +1,6 @@
 # sqlite3-src [![Version][version-img]][version-url] [![Status][status1-img]][status1-url] [![Status][status2-img]][status2-url]
 
-The package provides [SQLite][1].
+The package provides [SQLite].
 
 The following Cargo features are supported:
 
@@ -13,7 +13,7 @@ Your contribution is highly appreciated. Do not hesitate to open an issue or a
 pull request. Note that any contribution submitted for inclusion in the project
 will be licensed according to the terms given in [LICENSE.md](LICENSE.md).
 
-[1]: https://sqlite.org
+[sqlite]: https://sqlite.org
 
 [status1-img]: https://travis-ci.org/stainless-steel/sqlite3-src.svg?branch=master
 [status1-url]: https://travis-ci.org/stainless-steel/sqlite3-src
