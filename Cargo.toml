@@ -10,6 +10,9 @@ authors = [
 description = "The package provides SQLite."
 homepage = "https://github.com/stainless-steel/sqlite3-src"
 repository = "https://github.com/stainless-steel/sqlite3-src"
+readme = "README.md"
+categories = ["database"]
+keywords = ["database"]
 build = "build.rs"
 links = "sqlite3"
 
