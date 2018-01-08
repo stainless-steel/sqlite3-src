@@ -4,6 +4,7 @@ version = "0.2.7"
 license = "Apache-2.0/MIT"
 authors = [
     "Chip Collier <ccollier@machinezone.com>",
+    "Daniel Mueller <deso@posteo.net>",
     "Ivan Ukhov <ivan.ukhov@gmail.com>",
 ]
 description = "The package provides SQLite."
