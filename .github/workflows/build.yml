@@ -11,6 +11,8 @@ jobs:
     runs-on: macos-10.15
     steps:
       - uses: actions/checkout@v1
+        with:
+          submodules: true
       - name: Run the test suite
         uses: actions-rs/cargo@v1
         with:
@@ -22,6 +24,8 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v1
+        with:
+          submodules: true
       - name: Run the test suite
         uses: actions-rs/cargo@v1
         with:
