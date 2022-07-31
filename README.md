@@ -1,4 +1,4 @@
-# sqlite3-src [![Version][version-img]][version-url] [![Status][status1-img]][status1-url] [![Status][status2-img]][status2-url]
+# sqlite3-src [![Package][package-img]][package-url] [![Build][build1-img]][build1-url] [![Build][build2-img]][build2-url]
 
 The package provides [SQLite].
 
@@ -13,11 +13,11 @@ Your contribution is highly appreciated. Do not hesitate to open an issue or a
 pull request. Note that any contribution submitted for inclusion in the project
 will be licensed according to the terms given in [LICENSE.md](LICENSE.md).
 
-[sqlite]: https://sqlite.org
+[SQLite]: https://sqlite.org
 
-[status1-img]: https://travis-ci.org/stainless-steel/sqlite3-src.svg?branch=master
-[status1-url]: https://travis-ci.org/stainless-steel/sqlite3-src
-[status2-img]: https://ci.appveyor.com/api/projects/status/3lm8i5w0cfd636ma?svg=true
-[status2-url]: https://ci.appveyor.com/project/IvanUkhov/sqlite3-src
-[version-img]: https://img.shields.io/crates/v/sqlite3-src.svg
-[version-url]: https://crates.io/crates/sqlite3-src
+[build1-img]: https://github.com/stainless-steel/sqlite/workflows/build/badge.svg
+[build1-url]: https://github.com/stainless-steel/sqlite/actions/workflows/build.yml
+[build2-img]: https://ci.appveyor.com/api/projects/status/3lm8i5w0cfd636ma?svg=true
+[build2-url]: https://ci.appveyor.com/project/IvanUkhov/sqlite3-src
+[package-img]: https://img.shields.io/crates/v/sqlite.svg
+[package-url]: https://crates.io/crates/sqlite
