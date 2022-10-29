@@ -1,4 +1,4 @@
-# sqlite3-src [![Package][package-img]][package-url] [![Build][build1-img]][build1-url] [![Build][build2-img]][build2-url]
+# sqlite3-src [![Package][package-img]][package-url] [![Build][build-img]][build-url]
 
 The package provides [SQLite].
 
@@ -15,9 +15,7 @@ will be licensed according to the terms given in [LICENSE.md](LICENSE.md).
 
 [SQLite]: https://sqlite.org
 
-[build1-img]: https://github.com/stainless-steel/sqlite3-src/workflows/build/badge.svg
-[build1-url]: https://github.com/stainless-steel/sqlite3-src/actions/workflows/build.yml
-[build2-img]: https://ci.appveyor.com/api/projects/status/3lm8i5w0cfd636ma?svg=true
-[build2-url]: https://ci.appveyor.com/project/IvanUkhov/sqlite3-src
+[build-img]: https://github.com/stainless-steel/sqlite3-src/workflows/build/badge.svg
+[build-url]: https://github.com/stainless-steel/sqlite3-src/actions/workflows/build.yml
 [package-img]: https://img.shields.io/crates/v/sqlite3-src.svg
 [package-url]: https://crates.io/crates/sqlite3-src
