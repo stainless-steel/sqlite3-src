@@ -1,12 +1,13 @@
 [package]
 name = "sqlite3-src"
-version = "0.5.1"
+version = "0.6.0"
 edition = "2021"
 license = "Apache-2.0/MIT"
 authors = [
     "Chip Collier <ccollier@machinezone.com>",
     "Daniel Mueller <deso@posteo.net>",
     "Ivan Ukhov <ivan.ukhov@gmail.com>",
+    "Jean-Daniel Michaud <jeandaniel.michaud@ge.com>",
 ]
 description = "The package provides SQLite."
 homepage = "https://github.com/stainless-steel/sqlite3-src"
