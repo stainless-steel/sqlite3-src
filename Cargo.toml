@@ -1,6 +1,6 @@
 [package]
 name = "sqlite3-src"
-version = "0.6.0"
+version = "0.6.1"
 edition = "2021"
 license = "Apache-2.0/MIT"
 authors = [
@@ -20,6 +20,7 @@ links = "sqlite3"
 
 [features]
 bundled = []
+sqlite-ext-fts5 = []
 
 [build-dependencies]
 cc = "1.0"

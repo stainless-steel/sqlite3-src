@@ -1,7 +1,10 @@
 fn main() {
     if cfg!(feature = "bundled") || pkg_config::find_library("sqlite3").is_err() {
-        cc::Build::new()
-            .file("source/sqlite3.c")
-            .compile("libsqlite3.a");
+        let mut build = cc::Build::new();
+        build.file("source/sqlite3.c");
+        if cfg!(feature = "sqlite-ext-fts5") {
+            build.define("SQLITE_ENABLE_FTS5", "");
+        }
+        build.compile("libsqlite3.a");
     }
 }
