@@ -8,7 +8,8 @@ The following Cargo features are supported:
   ignoring any SQLite libraries that might be installed in the system.
 
 It is also possible to enable various [compile-time options] by setting
-environment variables with the same names.
+environment variables with the same names, such as
+`SQLITE_ENABLE_FTS5`.
 
 
 ## Contribution
@@ -18,7 +19,7 @@ pull request. Note that any contribution submitted for inclusion in the project
 will be licensed according to the terms given in [LICENSE.md](LICENSE.md).
 
 [SQLite]: https://sqlite.org
-[compile-time options](https://www.sqlite.org/compile.html).
+[compile-time options]: https://www.sqlite.org/compile.html
 
 [build-img]: https://github.com/stainless-steel/sqlite3-src/workflows/build/badge.svg
 [build-url]: https://github.com/stainless-steel/sqlite3-src/actions/workflows/build.yml
