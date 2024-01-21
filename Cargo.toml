@@ -20,7 +20,6 @@ links = "sqlite3"
 
 [features]
 bundled = []
-sqlite-ext-fts5 = []
 
 [build-dependencies]
 cc = "1.0"

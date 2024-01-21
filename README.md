@@ -7,6 +7,12 @@ The following Cargo features are supported:
 * `bundled` to compile SQLite from the source code that comes with the package,
   ignoring any SQLite libraries that might be installed in the system.
 
+## SQLite compile time options and features
+
+To enable SQLite options and features at compile time, you must define the
+appropriate environment variables as defined in the
+[SQLite documentation](https://www.sqlite.org/compile.html).
+
 ## Contribution
 
 Your contribution is highly appreciated. Do not hesitate to open an issue or a
