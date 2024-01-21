@@ -7,11 +7,9 @@ The following Cargo features are supported:
 * `bundled` to compile SQLite from the source code that comes with the package,
   ignoring any SQLite libraries that might be installed in the system.
 
-## SQLite compile time options and features
+It is also possible to enable various [compile-time options] by setting
+environment variables with the same names.
 
-To enable SQLite options and features at compile time, you must define the
-appropriate environment variables as defined in the
-[SQLite documentation](https://www.sqlite.org/compile.html).
 
 ## Contribution
 
@@ -20,6 +18,7 @@ pull request. Note that any contribution submitted for inclusion in the project
 will be licensed according to the terms given in [LICENSE.md](LICENSE.md).
 
 [SQLite]: https://sqlite.org
+[compile-time options](https://www.sqlite.org/compile.html).
 
 [build-img]: https://github.com/stainless-steel/sqlite3-src/workflows/build/badge.svg
 [build-url]: https://github.com/stainless-steel/sqlite3-src/actions/workflows/build.yml
