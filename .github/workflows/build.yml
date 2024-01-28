@@ -6,22 +6,23 @@ on:
       - main
 
 jobs:
-  macos:
-    name: macOS
+  check:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v1
-        with: {submodules: true}
-      - name: Run the test suite
-        uses: actions-rs/cargo@v1
-        with: {command: test, args: --features=bundled --verbose}
+      - uses: actions/checkout@v2
+      - uses: ructions/toolchain@v2
+        with: {toolchain: stable, components: "clippy, rustfmt"}
+      - run: cargo clippy -- -D warnings
+      - run: cargo fmt --all -- --check
 
-  ubuntu:
-    name: Ubuntu
-    runs-on: ubuntu-latest
+  test:
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v1
-        with: {submodules: true}
-      - name: Run the test suite
-        uses: actions-rs/cargo@v1
-        with: {command: test, args: --features=bundled --verbose}
+      - uses: actions/checkout@v2
+      - uses: ructions/toolchain@v2
+        with: {toolchain: stable}
+      - run: cargo test
+      - run: cargo test --features bundled
