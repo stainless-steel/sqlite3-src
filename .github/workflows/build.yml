@@ -17,11 +17,41 @@ jobs:
   test:
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
+        include:
+          - os: macos-latest
+            wasi_sdk_os: macos
+          - os: ubuntu-latest
+            wasi_sdk_os: linux
+          - os: windows-latest
+            wasi_sdk_os: windows
     runs-on: ${{ matrix.os }}
+    env:
+      WASI_SDK_VERSION: '25'
+      WASI_SDK_NAME: wasi-sdk-25.0-x86_64-${{ matrix.wasi_sdk_os }}
+      WASI_SDK_PATH: ${{ github.workspace }}/wasi-sdk-25.0-x86_64-${{ matrix.wasi_sdk_os }}
     steps:
       - uses: actions/checkout@v4
         with: {submodules: true}
-      - run: rustup toolchain install stable --profile=minimal
+      - name: Install Rust toolchain
+        run: rustup toolchain install stable --profile=minimal
+      - name: Install WASM targets
+        run: rustup target add wasm32-unknown-unknown wasm32-wasip1 wasm32-wasip2
       - run: cargo test
       - run: cargo test --features bundled
+      - name: Download WASI SDK
+        uses: robinraju/release-downloader@v1
+        with:
+          repository: WebAssembly/wasi-sdk
+          fileName: ${{ env.WASI_SDK_NAME }}.tar.gz
+          latest: false
+          tag: wasi-sdk-${{ env.WASI_SDK_VERSION }}
+          extract: true
+      - name: Build for wasm32-unknown-unknown
+        run: cargo build --target wasm32-unknown-unknown --features bundled
+        env:
+          RUSTFLAGS: --cfg=sqlite3_src_wasi_env="p1"
+      - name: Build for wasm32-wasip1
+        run: cargo build --target wasm32-wasip1 --features bundled
+      - name: Build for wasm32-wasip2
+        run: cargo build --target wasm32-wasip2 --features bundled

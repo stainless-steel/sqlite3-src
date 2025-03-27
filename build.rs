@@ -30,6 +30,7 @@ fn main() {
             build.define("SQLITE_OMIT_LOAD_EXTENSION", "1");
             build.define("SQLITE_THREADSAFE", "0");
             build.flag("-Wno-unused");
+            build.flag("-Wno-unused-parameter");
         }
 
         build.compile("libsqlite3.a");
