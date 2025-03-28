@@ -7,7 +7,6 @@ fn main() {
     }
 
     let target_family = env::var("CARGO_CFG_TARGET_FAMILY").unwrap();
-    let target_os = env::var("CARGO_CFG_TARGET_OS").unwrap();
 
     let mut build = cc::Build::new();
     build.file("source/sqlite3.c");
@@ -19,18 +18,19 @@ fn main() {
     }
 
     if target_family == "wasm" {
+        let target_os = env::var("CARGO_CFG_TARGET_OS").unwrap();
         let path = PathBuf::from(
             env::var("CARGO_CFG_SQLITE3_SRC_WASI_SDK_PATH")
                 .or(env::var("WASI_SDK_PATH"))
                 .expect("sqlite3_src_wasi_sdk_path or WASI_SDK_PATH should be set"),
         );
-        let path = path.canonicalize().expect("WASI_SDK_PATH should be valid");
+        let path = path.canonicalize().expect("the SDK path should be valid");
         build.compiler(path.join("bin/clang"));
         if target_os != "wasi" {
-            let environment = env::var("CARGO_CFG_SQLITE3_SRC_WASI_ENV")
-                .or(env::var("WASI_ENV"))
-                .expect("sqlite3_src_wasi_env or WASI_ENV should be set");
-            build.target(&format!("wasm32-wasi{environment}"));
+            let version = env::var("CARGO_CFG_SQLITE3_SRC_WASI_VERSION")
+                .or(env::var("WASI_VERSION"))
+                .expect("sqlite3_src_wasi_version or WASI_VERSION should be set");
+            build.target(&format!("wasm32-wasi{version}"));
         }
         build.define("__wasi__", None);
         build.define("SQLITE_OMIT_LOAD_EXTENSION", "1");
