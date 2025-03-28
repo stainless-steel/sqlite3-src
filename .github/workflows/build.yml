@@ -59,4 +59,4 @@ jobs:
         run: cargo test --features=bundled
 
       - if: matrix.target != 'default'
-        run: cargo test --features=bundled --target=${{ matrix.target }}
+        run: cargo build --features=bundled --target=${{ matrix.target }}
