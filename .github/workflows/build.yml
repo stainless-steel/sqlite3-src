@@ -30,7 +30,7 @@ jobs:
       WASI_SDK_VERSION: 25
       WASI_SDK_NAME: wasi-sdk-25.0-x86_64-${{ matrix.os }}
       WASI_SDK_PATH: ${{ github.workspace }}/wasi-sdk-25.0-x86_64-${{ matrix.os }}
-      RUSTFLAGS: --cfg=sqlite3_src_wasi_target_env=p1
+      RUSTFLAGS: --cfg=sqlite3_src_wasi_target_env="p1"
     steps:
       - uses: actions/checkout@v4
         with:
