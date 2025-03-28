@@ -27,10 +27,10 @@ fn main() {
         let path = path.canonicalize().expect("the SDK path should be valid");
         build.compiler(path.join("bin/clang"));
         if target_os != "wasi" {
-            let version = env::var("CARGO_CFG_SQLITE3_SRC_WASI_VERSION")
-                .or(env::var("WASI_VERSION"))
-                .expect("sqlite3_src_wasi_version or WASI_VERSION should be set");
-            build.target(&format!("wasm32-wasi{version}"));
+            let target_env = env::var("CARGO_CFG_SQLITE3_SRC_WASI_TARGET_ENV")
+                .or(env::var("WASI_TARGET_ENV"))
+                .expect("sqlite3_src_wasi_target_env or WASI_TARGET_ENV should be set");
+            build.target(&format!("wasm32-wasi{target_env}"));
         }
         build.define("__wasi__", None);
         build.define("SQLITE_OMIT_LOAD_EXTENSION", "1");

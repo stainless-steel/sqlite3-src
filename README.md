@@ -23,10 +23,10 @@ to point to an existing installation of the SDK. The path should be absolute.
 
 To compile for the `wasm32-unknown-unknown` target, define in addition either
 
-* the `sqlite3_src_wasi_version` configuration flag for `rustc` or
-* the `WASI_VERSION` environment variable
+* the `sqlite3_src_wasi_target_env` configuration flag for `rustc` or
+* the `WASI_TARGET_ENV` environment variable
 
-to specify which WASI version to compile for.
+to specify which target environment to compile for (e.g., `p1`).
 
 ## Contribution
 
