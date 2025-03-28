@@ -19,6 +19,7 @@ jobs:
 
   test:
     strategy:
+      fail-fast: false
       matrix:
         os: [linux, macos, windows]
         target: [default, wasm32-wasip1, wasm32-wasip2, wasm32-unknown-unknown]
