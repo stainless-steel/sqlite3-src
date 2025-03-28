@@ -35,8 +35,8 @@ pull request. Note that any contribution submitted for inclusion in the project
 will be licensed according to the terms given in [LICENSE.md](LICENSE.md).
 
 [SQLite]: https://sqlite.org
+[WASI SDK]: https://github.com/WebAssembly/wasi-sdk
 [compile-time options]: https://www.sqlite.org/compile.html
-[WASI SDK]: https://github.com/WebAssembly/wasi-sdk/releases
 
 [build-img]: https://github.com/stainless-steel/sqlite3-src/workflows/build/badge.svg
 [build-url]: https://github.com/stainless-steel/sqlite3-src/actions/workflows/build.yml
