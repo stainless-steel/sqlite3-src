@@ -13,19 +13,20 @@ environment variables with the same names, such as
 
 ## WebAssembly
 
-WebAssembly is supported through [WASI SDK]. To compile for the `wasip1` or
-`wasip2` target, define either
+WebAssembly is supported through [WASI SDK]. To compile for the `wasm32-wasip1`
+or `wasm32-wasip2` target, define either
 
 * the `sqlite3_src_wasi_sdk_path` configuration flag for `rustc` or
 * the `WASI_SDK_PATH` environment variable
 
-to point to a prior installation of the SDK. The path should be absolute;
-however, Cargo supports resolving relative paths in the `[env]` section of
-`.cargo/config.toml`.
+to point to an existing installation of the SDK. The path should be absolute.
 
-If you are compiling for `wasm32-unknown-unknown`, you also need to set the
-`sqlite3_src_wasi_env` configuration flag for `rustc` to specify which WASI
-version you want to compile for (e.g., `p1`).
+To compile for the `wasm32-unknown-unknown` target, define in addition either
+
+* the `sqlite3_src_wasi_env` configuration flag for `rustc` or
+* the `WASI_ENV` environment variable
+
+to specify which WASI version to compile for.
 
 ## Contribution
 
