@@ -20,41 +20,39 @@ jobs:
   test:
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
-        include:
-          - os: macos-latest
-            wasi_sdk_os: macos
-          - os: ubuntu-latest
-            wasi_sdk_os: linux
-          - os: windows-latest
-            wasi_sdk_os: windows
-    runs-on: ${{ matrix.os }}
+        os: [macos, ubuntu, windows]
+        target: [default, wasm32-wasip1, wasm32-wasip2, wasm32-unknown-unknown]
+    runs-on: ${{ matrix.os }}-latest
     env:
-      WASI_SDK_VERSION: '25'
-      WASI_SDK_NAME: wasi-sdk-25.0-x86_64-${{ matrix.wasi_sdk_os }}
-      WASI_SDK_PATH: ${{ github.workspace }}/wasi-sdk-25.0-x86_64-${{ matrix.wasi_sdk_os }}
+      WASI_SDK_VERSION: 25
+      WASI_SDK_NAME: wasi-sdk-25.0-x86_64-${{ matrix.os }}
+      WASI_SDK_PATH: ${{ github.workspace }}/wasi-sdk-25.0-x86_64-${{ matrix.os }}
+      RUSTFLAGS: --cfg=sqlite3_src_wasi_target_env=p1
     steps:
       - uses: actions/checkout@v4
-        with: {submodules: true}
-      - name: Install Rust toolchain
-        run: rustup toolchain install stable --profile=minimal
-      - name: Install WASM targets
-        run: rustup target add wasm32-unknown-unknown wasm32-wasip1 wasm32-wasip2
-      - run: cargo test
-      - run: cargo test --features bundled
-      - name: Download WASI SDK
+        with:
+          submodules: true
+
+      - if: contains(matrix.target, 'wasm')
         uses: robinraju/release-downloader@v1
         with:
           repository: WebAssembly/wasi-sdk
           fileName: ${{ env.WASI_SDK_NAME }}.tar.gz
-          latest: false
           tag: wasi-sdk-${{ env.WASI_SDK_VERSION }}
+          latest: false
           extract: true
-      - name: Build for wasm32-unknown-unknown
-        run: cargo build --target wasm32-unknown-unknown --features bundled
-        env:
-          RUSTFLAGS: --cfg=sqlite3_src_wasi_env="p1"
-      - name: Build for wasm32-wasip1
-        run: cargo build --target wasm32-wasip1 --features bundled
-      - name: Build for wasm32-wasip2
-        run: cargo build --target wasm32-wasip2 --features bundled
+
+      - if: matrix.target == 'default'
+        run: rustup toolchain install stable --profile=minimal
+
+      - if: matrix.target != 'default'
+        run: rustup toolchain install stable --profile=minimal --target=${{ matrix.target }}
+
+      - if: matrix.target == 'default'
+        run: cargo test
+
+      - if: matrix.target == 'default'
+        run: cargo test --features=bundled
+
+      - if: matrix.target != 'default'
+        run: cargo test --features=bundled --target=${{ matrix.target }}
