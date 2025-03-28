@@ -6,8 +6,6 @@ fn main() {
         return;
     }
 
-    let target_family = env::var("CARGO_CFG_TARGET_FAMILY").unwrap();
-
     let mut build = cc::Build::new();
     build.file("source/sqlite3.c");
 
@@ -17,6 +15,7 @@ fn main() {
         }
     }
 
+    let target_family = env::var("CARGO_CFG_TARGET_FAMILY").unwrap();
     if target_family == "wasm" {
         let target_os = env::var("CARGO_CFG_TARGET_OS").unwrap();
         let path = PathBuf::from(
