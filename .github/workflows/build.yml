@@ -17,46 +17,49 @@ jobs:
       - run: cargo clippy -- -D warnings
       - run: cargo fmt --all -- --check
 
-  test:
+  test-default:
     strategy:
       fail-fast: false
       matrix:
-        os: [linux, macos, windows]
-        target: [default, wasm32-wasip1, wasm32-wasip2, wasm32-unknown-unknown]
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - run: rustup toolchain install stable --profile=minimal
+      - run: cargo test
+      - run: cargo test --features=bundled
+
+  test-wasm:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+        target: [wasm32-wasip1, wasm32-wasip2, wasm32-unknown-unknown]
         include:
-          - os: linux
-            distribution: ubuntu
-    runs-on: ${{ matrix.distribution || matrix.os }}-latest
+          - os: macos-latest
+            wasi_os: macos
+          - os: ubuntu-latest
+            wasi_os: linux
+          - os: windows-latest
+            wasi_os: windows
+    runs-on: ${{ matrix.os }}
     env:
       WASI_SDK_VERSION: 25
-      WASI_SDK_NAME: wasi-sdk-25.0-x86_64-${{ matrix.os }}
-      WASI_SDK_PATH: ${{ github.workspace }}/wasi-sdk-25.0-x86_64-${{ matrix.os }}
+      WASI_SDK_NAME: wasi-sdk-25.0-x86_64-${{ matrix.wasi_os }}
+      WASI_SDK_PATH: ${{ github.workspace }}/wasi-sdk-25.0-x86_64-${{ matrix.wasi_os }}
       RUSTFLAGS: --cfg=sqlite3_src_wasi_target_env="p1"
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: true
-
-      - if: contains(matrix.target, 'wasm')
-        uses: robinraju/release-downloader@v1
+      - uses: robinraju/release-downloader@v1
         with:
           repository: WebAssembly/wasi-sdk
           fileName: ${{ env.WASI_SDK_NAME }}.tar.gz
           tag: wasi-sdk-${{ env.WASI_SDK_VERSION }}
           latest: false
           extract: true
-
-      - if: matrix.target == 'default'
-        run: rustup toolchain install stable --profile=minimal
-
-      - if: matrix.target != 'default'
-        run: rustup toolchain install stable --profile=minimal --target=${{ matrix.target }}
-
-      - if: matrix.target == 'default'
-        run: cargo test
-
-      - if: matrix.target == 'default'
-        run: cargo test --features=bundled
-
-      - if: matrix.target != 'default'
-        run: cargo build --features=bundled --target=${{ matrix.target }}
+      - run: rustup toolchain install stable --profile=minimal --target=${{ matrix.target }}
+      - run: cargo build --features=bundled --target=${{ matrix.target }}
