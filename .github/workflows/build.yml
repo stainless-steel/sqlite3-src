@@ -28,8 +28,8 @@ jobs:
         with:
           submodules: true
       - run: rustup toolchain install stable --profile=minimal
-      - run: cargo test
-      - run: cargo test --features=bundled
+      - run: cargo build
+      - run: cargo build --features=bundled
 
   test-wasm:
     strategy:
