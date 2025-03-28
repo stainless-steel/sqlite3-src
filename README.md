@@ -19,7 +19,7 @@ or `wasm32-wasip2` target, define either
 * the `sqlite3_src_wasi_sdk_path` configuration flag for `rustc` or
 * the `WASI_SDK_PATH` environment variable
 
-to point to an existing installation of the SDK. The path should be absolute.
+to point to an existing installation of the SDK.
 
 To compile for the `wasm32-unknown-unknown` target, define in addition either
 
