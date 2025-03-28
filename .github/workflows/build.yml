@@ -20,9 +20,12 @@ jobs:
   test:
     strategy:
       matrix:
-        os: [macos, ubuntu, windows]
+        os: [linux, macos, windows]
         target: [default, wasm32-wasip1, wasm32-wasip2, wasm32-unknown-unknown]
-    runs-on: ${{ matrix.os }}-latest
+        include:
+          - os: linux
+            distribution: ubuntu
+    runs-on: ${{ matrix.distribution || matrix.os }}-latest
     env:
       WASI_SDK_VERSION: 25
       WASI_SDK_NAME: wasi-sdk-25.0-x86_64-${{ matrix.os }}
