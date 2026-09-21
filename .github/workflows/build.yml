@@ -12,7 +12,7 @@ jobs:
   check:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: rustup toolchain install stable --profile=minimal --component=clippy --component=rustfmt
       - run: cargo clippy -- -D warnings
       - run: cargo fmt --all -- --check
@@ -24,7 +24,7 @@ jobs:
         os: [macos-latest, ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           submodules: true
       - run: rustup toolchain install stable --profile=minimal
@@ -51,7 +51,7 @@ jobs:
       WASI_SDK_PATH: ${{ github.workspace }}/wasi-sdk-25.0-x86_64-${{ matrix.wasi_os }}
       RUSTFLAGS: --cfg=sqlite3_src_wasi_target_env="p1"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           submodules: true
       - uses: robinraju/release-downloader@v1
