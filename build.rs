@@ -3,18 +3,25 @@ use std::path::PathBuf;
 
 fn main() {
     if cfg!(feature = "bundled") && cfg!(feature = "system") {
-        panic!("The 'bundled' and 'system' features are mutually exclusive");
+        panic!("bundled and system are mutually exclusive");
+    }
+
+    if cfg!(feature = "bundled") {
+        build();
     }
 
     if cfg!(feature = "system") {
-        pkg_config::find_library("sqlite3").expect("system sqlite3 is required for the 'system' feature");
+        pkg_config::find_library("sqlite3").expect("SQLite should be preinstalled");
+    }
+
+    if pkg_config::find_library("sqlite3").is_ok() {
         return;
     }
 
-    if !cfg!(feature = "bundled") && pkg_config::find_library("sqlite3").is_ok() {
-        return;
-    }
+    build();
+}
 
+fn build() {
     let mut build = cc::Build::new();
     build.file("source/sqlite3.c");
 
