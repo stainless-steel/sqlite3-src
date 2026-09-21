@@ -6,6 +6,8 @@ The following Cargo features are supported:
 
 * `bundled` to compile SQLite from the source code that comes with the package,
   ignoring any SQLite libraries that might be installed in the system.
+* `system` to compile SQLite using sources installed in the system. Bundled
+  sources will not be used as a fallback.
 
 It is also possible to enable various [compile-time options] by setting
 environment variables with the same names, such as

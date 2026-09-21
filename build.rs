@@ -2,6 +2,15 @@ use std::env;
 use std::path::PathBuf;
 
 fn main() {
+    if cfg!(feature = "bundled") && cfg!(feature = "system") {
+        panic!("The 'bundled' and 'system' features are mutually exclusive");
+    }
+
+    if cfg!(feature = "system") {
+        pkg_config::find_library("sqlite3").expect("system sqlite3 is required for the 'system' feature");
+        return;
+    }
+
     if !cfg!(feature = "bundled") && pkg_config::find_library("sqlite3").is_ok() {
         return;
     }
