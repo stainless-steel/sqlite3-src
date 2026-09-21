@@ -8,10 +8,12 @@ fn main() {
 
     if cfg!(feature = "bundled") {
         build();
+        return;
     }
 
     if cfg!(feature = "system") {
         pkg_config::find_library("sqlite3").expect("SQLite should be preinstalled");
+        return;
     }
 
     if pkg_config::find_library("sqlite3").is_ok() {
