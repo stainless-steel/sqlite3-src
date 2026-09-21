@@ -6,6 +6,7 @@ license = "Apache-2.0 OR MIT"
 authors = [
     "Chip Collier <ccollier@machinezone.com>",
     "Daniel Mueller <deso@posteo.net>",
+    "Hugo Osvaldo Barrera <hugo@whynothugo.nl>",
     "Ivan Ukhov <ivan.ukhov@gmail.com>",
     "Jean-Daniel Michaud <jean.daniel.michaud@gmail.com>",
     "Sondre Vincent Russvoll",
